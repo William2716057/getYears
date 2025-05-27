@@ -17,8 +17,7 @@ weekday_map = {
 }
 
 # Get numeric weekday
-target_day = weekday_map.get(weekDay.capitalize())
-
+target_day = weekday_map.get(weekDay)
 if target_day is None:
     print("Invalid weekday entered.")
     exit()
@@ -30,9 +29,9 @@ matches = []
 for year in range(1900, 2101):
     try:
         for month in range(1, 13):
-            if calendar.weekday(year, month, weekDay) == target_day:
+           if calendar.weekday(year, month, month_day) == target_day:
             #matching_years.append(year)
-                dt = month_day(year, month, month_day)
+                dt = date(year, month, month_day)
                 matches.append(dt.strftime("%A, %B %d, %Y"))
             #matching_months.append(month)
     except ValueError:
