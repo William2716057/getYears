@@ -25,8 +25,10 @@ if target_day is None:
 # Find matching years
 #matching_years = []
 #matching_months = []
+
+present = date.today().year
 matches = []
-for year in range(1900, 2101):
+for year in range(1900, present):
     try:
         for month in range(1, 13):
            if calendar.weekday(year, month, month_day) == target_day:
