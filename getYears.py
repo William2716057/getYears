@@ -1,8 +1,9 @@
 import calendar 
+from datetime import date
 
 weekDay = input("Enter weekday: ")
-date = input("Enter day of month:  ")
-month, day = map(int, date.split())
+month_day = int(input("Enter day of month:  "))
+#month, day = map(int, date.split())
 
 # Map weekday name to number
 weekday_map = {
@@ -23,17 +24,25 @@ if target_day is None:
     exit()
 
 # Find matching years
-matching_years = []
+#matching_years = []
+#matching_months = []
+matches = []
 for year in range(1900, 2101):
     try:
-        if calendar.weekday(year, month, day) == target_day:
-            matching_years.append(year)
+        for month in range(1, 13):
+            if calendar.weekday(year, month, weekDay) == target_day:
+            #matching_years.append(year)
+                dt = month_day(year, month, month_day)
+                matches.append(dt.strftime("%A, %B %d, %Y"))
+            #matching_months.append(month)
     except ValueError:
         continue
 
+for match in matches:
+    print(match)
 # Print result
-print(f"\nYears when {month}/{day} fell on a {weekDay.capitalize()}:")
-print(matching_years)
+#print(f"\nYears when {month}/{weekDay} fell on a {weekDay.capitalize()}:")
+#print(matching_years, matching_months)
 #print(calendar.year(weekDay, date))
 #for i in years 
 #return years
